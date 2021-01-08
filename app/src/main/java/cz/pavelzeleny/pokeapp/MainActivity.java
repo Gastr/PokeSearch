@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
     final String sharedFileName = "PokeFile";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

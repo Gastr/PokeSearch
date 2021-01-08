@@ -2,6 +2,7 @@ package cz.pavelzeleny.pokeapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.MainVi
     public MainViewAdapter(Context context, List<PokemonModel> pokemons) {
         this.context = context;
         this.pokemons = pokemons;
+
     }
 
     @NonNull
@@ -32,7 +34,6 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.MainVi
         View view = inflater.inflate(R.layout.main_row,parent,false);
         return new MainViewHolder(view);
     }
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
@@ -45,6 +46,14 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.MainVi
         holder.ATKText.setText(Integer.toString(pokemon.getATK()));
         holder.DEFText.setText(Integer.toString(pokemon.getDEF()));
         Picasso.get().load(pokemon.getImageULR()).into(holder.imagePokemon);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ZoomActivity.class);
+                intent.putExtra("url",pokemon.getImageULR());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -67,6 +76,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.MainVi
             HPText = itemView.findViewById(R.id.HPText);
             ATKText = itemView.findViewById(R.id.ATKText);
             DEFText = itemView.findViewById(R.id.DEFText);
+            };
         }
     }
-}
+
