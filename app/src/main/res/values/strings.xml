@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PokeApp</string>
+    <string name="history_activity_label">History</string>
+    <string name="history_to_main_btn">Back</string>
+</resources>
